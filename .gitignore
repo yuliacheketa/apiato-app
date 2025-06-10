@@ -1,0 +1,20 @@
+# Ignore IDE files
+/.idea/
+/.vscode/
+/.phpstorm.meta.php
+*.swp
+*.swo
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore PHP / Laravel specific
+/vendor/
+.env
+.phpunit.result.cache
+Homestead.json
+.dockerenv
+
+# Ignore Composer asset files
+composer.phar

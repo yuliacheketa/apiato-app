@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: docker-compose/php-fpm/Dockerfile
+    volumes:
+      - ./apiato-app:/var/www/html
+    environment:
+      - PHP_ALLOW_URL_FOPEN=1
+      - PHP_ALLOW_URL_INCLUDE=1
+
+  postgres:
+    image: postgres:15
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: theleftoverluck
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: theleftoverluck
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
