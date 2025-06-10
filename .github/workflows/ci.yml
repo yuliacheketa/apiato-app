@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v3
+        uses: shivammathur/setup-php@a01907d086f900f2a8d89f5a4a2ec2d5ae8c3d2e9d1
         with:
           php-version: '8.1'
           extensions: mbstring, pdo_mysql, exif
