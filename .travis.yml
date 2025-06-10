@@ -1,0 +1,13 @@
+language: php
+
+php:
+  - '8.1'
+
+before_script: 
+  - cp apiato-app/.env.example apiato-app/.env
+
+  - cd apiato-app && composer install --no-progress --prefer-dist && cd ..
+
+script:
+  - echo "Project builds successfully!"
+  - php -r "echo 'PHP is working\n';"
