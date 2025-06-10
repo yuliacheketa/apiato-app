@@ -23,8 +23,7 @@ jobs:
           extensions: mbstring, pdo_mysql, exif
           tools: composer:v2
 
-      - name: Copy .env.example to .env
-        run: cp .env.example .env
+
 
       - name: Install dependencies via Composer
         working-directory: apiato-app
